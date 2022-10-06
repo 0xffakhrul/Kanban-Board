@@ -2,9 +2,9 @@
   <div>
     <b-card
       class="mb-3"
-      :header="headerName"
+      :header="headerNameData"
       text-variant="white"
-      :header-bg-variant="headerColor"
+      :header-bg-variant="headerColorData"
     >
       <draggable
         ghost-class="ghost"
@@ -18,7 +18,7 @@
           :key="task.id"
         >
           {{ task.name }}
-          <b-icon-trash></b-icon-trash>
+          <b-icon-trash class="deleteIcon"></b-icon-trash>
         </b-list-group-item>
       </draggable>
     </b-card>
@@ -27,20 +27,21 @@
 
 <script>
 import draggable from "vuedraggable";
-import {BIconTrash} from "bootstrap-vue"
+import { BIconTrash } from "bootstrap-vue";
+
 export default {
   name: "KanbanCard",
   data() {
     return {
-      headerName: this.HeaderName,
-      headerColor: this.HeaderColor,
+      headerNameData: this.HeaderName,
+      headerColorData: this.HeaderColor,
       cardTextColorData: this.cardTextColor,
       dummyListTask: this.TaskList,
     };
   },
   components: {
     draggable,
-    BIconTrash
+    BIconTrash,
   },
   props: {
     HeaderName: {
@@ -66,4 +67,20 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+:root{
+    --paleWhite: #f8f8fa
+}
+
+.deleteIcon {
+    cursor: pointer;  
+}
+.card-body {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border: none;
+    background-color: var(--paleWhite);
+}
+.list-group {
+    border-radius: .40rem;
+}
+</style>
