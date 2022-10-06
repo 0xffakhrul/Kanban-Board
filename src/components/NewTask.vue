@@ -5,7 +5,7 @@
         <b-form-input
           id="input-2"
           v-model="newTask"
-          placeholder="Enter Task"
+          placeholder="Enter New Task"
           @keyup.enter="addTask"
         ></b-form-input>
         <b-button @click="addTask" variant="primary" class="ml-3">Add</b-button>
@@ -13,7 +13,7 @@
     </b-row>
     <b-row class="mt-4">
       <b-col>
-        <b-card class="mb-3" header="New Task" header-bg-variant="light">
+        <!-- <b-card class="mb-3" header="New Task" header-bg-variant="light">
           <draggable
             ghost-class="ghost"
             class="list-group kanban-column"
@@ -28,11 +28,17 @@
               {{ task.name }}
             </b-list-group-item>
           </draggable>
-        </b-card>
+        </b-card> -->
+        <kanban-card
+          HeaderName="New Task"
+          HeaderColor="primary"
+          cardTextColor="primary"
+          :TaskList="dummyTask"
+        ></kanban-card>
       </b-col>
 
       <b-col cols="3">
-        <b-card
+        <!-- <b-card
           class="mb-3"
           header="In Progress"
           header-bg-variant="primary"
@@ -52,11 +58,17 @@
               {{ task.name }}
             </b-list-group-item>
           </draggable>
-        </b-card>
+        </b-card> -->
+        <kanban-card
+          HeaderName="In Progress"
+          HeaderColor="danger"
+          :TaskList="taskInProgress"
+          cardTextColor="danger"
+        ></kanban-card>
       </b-col>
 
       <b-col cols="3">
-        <b-card class="mb-3" header="Review" header-bg-variant="warning">
+        <!-- <b-card class="mb-3" header="Review" header-bg-variant="warning">
           <draggable
             ghost-class="ghost"
             class="list-group kanban-column"
@@ -71,11 +83,17 @@
               {{ task.name }}
             </b-list-group-item>
           </draggable>
-        </b-card>
+        </b-card> -->
+        <kanban-card
+          HeaderName="In Review"
+          HeaderColor="warning"
+          cardTextColor="warning"
+          :TaskList="taskInReview"
+        ></kanban-card>
       </b-col>
 
       <b-col cols="3">
-        <b-card
+        <!-- <b-card
           class="mb-3"
           header="On Hold"
           header-bg-variant="danger"
@@ -95,11 +113,17 @@
               {{ task.name }}
             </b-list-group-item>
           </draggable>
-        </b-card>
+        </b-card> -->
+        <kanban-card
+          HeaderName="Done"
+          HeaderColor="success"
+          cardTextColor="success"
+          :TaskList="taskDone"
+        ></kanban-card>
       </b-col>
 
       <b-col cols="3">
-        <b-card
+        <!-- <b-card
           class="mb-3"
           header="On Hold"
           header-bg-variant="success"
@@ -119,31 +143,33 @@
               {{ task.name }}
             </b-list-group-item>
           </draggable>
-        </b-card>
+        </b-card> -->
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import draggable from "vuedraggable";
+// import draggable from "vuedraggable";
+import KanbanCard from "./KanbanCard";
 
 export default {
   name: "App",
   components: {
-    draggable,
+    // draggable,
+    KanbanCard,
   },
   data() {
     return {
       newTask: "",
       dummyTask: [
-        { id: "s", name: "Sleep"},
-        { id: "e", name: "Eat"},
+        { id: "s", name: "Sleep" },
+        { id: "e", name: "Eat" },
       ],
-      taskInProgress: [{ id: "w", name: "Work"}],
-      taskInReview: [{ id: "k", name: "Kanban"}],
-      taskOnHold: [{ id: "v", name: "Vue"}],
-      taskDone: [],
+      taskInProgress: [{ id: "w", name: "Work" }],
+      taskInReview: [{ id: "k", name: "Kanban" }],
+      taskOnHold: [{ id: "v", name: "Vue" }],
+      taskDone: [{ id: "n", name: "Nothing" }],
     };
   },
   methods: {
@@ -153,6 +179,9 @@ export default {
         this.newTask = "";
       }
     },
+    deleteTask() {
+        
+    }
   },
 };
 </script>
