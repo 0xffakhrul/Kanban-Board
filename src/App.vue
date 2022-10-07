@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2>DEEZ</h2>
     <new-task></new-task>
   </div>
 </template>

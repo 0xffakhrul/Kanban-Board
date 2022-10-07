@@ -11,17 +11,20 @@
         <b-button @click="addTask" variant="primary" class="ml-3">Add</b-button>
       </div>
     </b-row>
+
     <b-row class="mt-4">
-      <b-col>
+      <b-col class="newTaskCard">
         <kanban-card
+          class="newTaskCardComp"
           HeaderName="New Task"
           HeaderColor="primary"
           cardTextColor="primary"
           :TaskList="dummyTask"
+          @delete-task="deleteTask"
         ></kanban-card>
       </b-col>
 
-      <b-col cols="3">
+      <b-col class="taskInProgressCard">
         <kanban-card
           HeaderName="In Progress"
           HeaderColor="danger"
@@ -30,17 +33,18 @@
         ></kanban-card>
       </b-col>
 
-      <b-col cols="3">
+      <b-col class="taskInRevCard">
         <kanban-card
+          class="colInReview"
           HeaderName="In Review"
           HeaderColor="warning"
-          cardTextColor="warning"
+          cardTextColor="dark"
           :TaskList="taskInReview"
         ></kanban-card>
       </b-col>
 
-      <b-col cols="3">
-        <kanban-card 
+      <b-col class="taskDoneCard">
+        <kanban-card
           HeaderName="Done"
           HeaderColor="success"
           cardTextColor="success"
@@ -69,7 +73,6 @@ export default {
       ],
       taskInProgress: [{ id: "w", name: "Work" }],
       taskInReview: [{ id: "k", name: "Kanban" }],
-      taskOnHold: [{ id: "v", name: "Vue" }],
       taskDone: [{ id: "n", name: "Nothing" }],
     };
   },
@@ -94,15 +97,23 @@ export default {
         });
       }
     },
-    deleteTask() {
-      
-    }
+    deleteTask(id) {
+      const value = this.dummyTask.find((item) => {
+        return item.id === id;
+      });
+      this.dummyTask.splice(this.dummyTask.indexOf(value), 1);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-body {
-  background-color: rgba(221,239,252,255);  
+* {
+  background-color: #f5f7fb;
+}
+
+.card-deck {
+  display: flex;
+  justify-content: center;
 }
 </style>
