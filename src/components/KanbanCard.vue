@@ -78,10 +78,6 @@ export default {
   --paleWhite: #f8f8fa;
 }
 
-body {
-  background-color: aqua;
-}
-
 .deleteIcon {
   cursor: pointer;
 }
@@ -111,6 +107,10 @@ body {
   color: black;
   font-weight: bold;
   text-align: left;
+}
+
+.inProgressHeader {
+  background-color: #333;
 }
 
 </style>

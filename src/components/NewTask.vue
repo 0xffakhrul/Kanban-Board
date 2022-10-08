@@ -15,10 +15,8 @@
     <b-row class="mt-4">
       <b-col class="newTaskCard">
         <kanban-card
-          class="newTaskCardComp"
           HeaderName="New Task"
           HeaderColor="primary"
-          cardTextColor="primary"
           :TaskList="dummyTask"
           @delete-task="deleteTask"
         ></kanban-card>
@@ -27,9 +25,8 @@
       <b-col class="taskInProgressCard">
         <kanban-card
           HeaderName="In Progress"
-          HeaderColor="danger"
+          HeaderColor="success"
           :TaskList="taskInProgress"
-          cardTextColor="danger"
         ></kanban-card>
       </b-col>
 
@@ -38,7 +35,6 @@
           class="colInReview"
           HeaderName="In Review"
           HeaderColor="warning"
-          cardTextColor="dark"
           :TaskList="taskInReview"
         ></kanban-card>
       </b-col>
@@ -47,7 +43,6 @@
         <kanban-card
           HeaderName="Done"
           HeaderColor="success"
-          cardTextColor="success"
           :TaskList="taskDone"
         ></kanban-card>
       </b-col>
@@ -116,4 +111,6 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+
 </style>

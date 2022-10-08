@@ -30,4 +30,8 @@ export default {
   grid-template-columns: 90% 10%;
   align-items: center;
 }
+
+.deleteIcon {
+  color: rgb(255, 85, 85);
+}
 </style>
